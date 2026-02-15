@@ -1,12 +1,22 @@
 import type { OrgNode, SessionCategory } from './types';
 
 export const NAV_ITEMS = [
-  { path: '/', label: 'Task Manager', icon: 'LayoutDashboard' },
+  { path: '/', label: 'Mission Control', icon: 'Radar' },
+  { path: '/plans', label: 'Plans', icon: 'Map' },
+  { path: '/tasks', label: 'Task Manager', icon: 'LayoutDashboard' },
+  { path: '/sessions', label: 'Sessions', icon: 'ScrollText' },
   { path: '/org', label: 'Org Chart', icon: 'Network' },
   { path: '/standup', label: 'Standup', icon: 'MessageSquare' },
   { path: '/workspaces', label: 'Workspaces', icon: 'FolderOpen' },
   { path: '/docs', label: 'Docs', icon: 'BookOpen' },
 ] as const;
+
+export const DEPARTMENT_COLORS: Record<string, string> = {
+  engineering: 'text-blue-400',
+  revenue: 'text-green-400',
+  marketing: 'text-purple-400',
+  hq: 'text-amber',
+};
 
 export const ORG_HIERARCHY: OrgNode = {
   id: 'henry',

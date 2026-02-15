@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Network, MessageSquare, FolderOpen, BookOpen } from 'lucide-react';
+import { Radar, Map, LayoutDashboard, ScrollText, FolderOpen } from 'lucide-react';
 
 const navItems = [
-  { path: '/', label: 'Tasks', icon: LayoutDashboard },
-  { path: '/org', label: 'Org', icon: Network },
-  { path: '/standup', label: 'Standup', icon: MessageSquare },
+  { path: '/', label: 'Control', icon: Radar },
+  { path: '/plans', label: 'Plans', icon: Map },
+  { path: '/tasks', label: 'Tasks', icon: LayoutDashboard },
+  { path: '/sessions', label: 'Sessions', icon: ScrollText },
   { path: '/workspaces', label: 'Agents', icon: FolderOpen },
-  { path: '/docs', label: 'Docs', icon: BookOpen },
 ];
 
 export function MobileNav() {

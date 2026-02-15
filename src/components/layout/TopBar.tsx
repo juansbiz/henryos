@@ -2,7 +2,10 @@ import { useLocation } from 'react-router-dom';
 import { StatusIndicator } from './StatusIndicator';
 
 const pageTitles: Record<string, string> = {
-  '/': 'Task Manager',
+  '/': 'Mission Control',
+  '/plans': 'Plan Manager',
+  '/tasks': 'Task Manager',
+  '/sessions': 'Sessions',
   '/org': 'Org Chart',
   '/standup': 'Standup',
   '/workspaces': 'Workspaces',

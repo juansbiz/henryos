@@ -1,0 +1,173 @@
+{
+  "id": "plan-v5",
+  "title": "V5.0 \u2014 Ship or Die",
+  "description": "Complete security hardening, UI migration, and launch prep by Feb 28",
+  "createdBy": "henry",
+  "createdByName": "Henry",
+  "createdAt": 1739200000000,
+  "updatedAt": 1739500000000,
+  "targetDate": "2026-02-28",
+  "status": "active",
+  "phases": [
+    {
+      "id": "phase-security",
+      "name": "Security Hardening",
+      "emoji": "\ud83d\udd12",
+      "status": "in-progress",
+      "priority": "critical"
+    },
+    {
+      "id": "phase-ui",
+      "name": "UI Migration",
+      "emoji": "\ud83c\udfa8",
+      "status": "in-progress",
+      "priority": "high"
+    },
+    {
+      "id": "phase-launch",
+      "name": "Launch Prep",
+      "emoji": "\ud83d\ude80",
+      "status": "draft",
+      "priority": "high"
+    }
+  ],
+  "subPlans": [
+    {
+      "id": "sub-eng-security",
+      "title": "Engineering \u2014 Security Sprint",
+      "createdBy": "elon",
+      "createdByName": "Elon",
+      "department": "engineering",
+      "parentPhaseId": "phase-security",
+      "status": "in-progress",
+      "createdAt": 1739210000000,
+      "tasks": [
+        {
+          "id": "task-rls",
+          "name": "RLS Policy Migration",
+          "assignedTo": "sales",
+          "assignedToName": "Sales",
+          "status": "completed",
+          "completedAt": 1739400000000
+        },
+        {
+          "id": "task-input-val",
+          "name": "Input Validation Layer",
+          "assignedTo": "marketing",
+          "assignedToName": "Marketing",
+          "status": "in-progress"
+        },
+        {
+          "id": "task-e2e-sec",
+          "name": "E2E Security Tests",
+          "assignedTo": "tasks",
+          "assignedToName": "Tasks",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "sub-rev-security",
+      "title": "Revenue \u2014 Pipeline Security",
+      "createdBy": "warren",
+      "createdByName": "Warren",
+      "department": "revenue",
+      "parentPhaseId": "phase-security",
+      "status": "in-progress",
+      "createdAt": 1739220000000,
+      "tasks": [
+        {
+          "id": "task-api-audit",
+          "name": "API Endpoint Audit",
+          "assignedTo": "scout",
+          "assignedToName": "Scout",
+          "status": "completed",
+          "completedAt": 1739380000000
+        },
+        {
+          "id": "task-webhook-sec",
+          "name": "Webhook Signature Verification",
+          "assignedTo": "herald",
+          "assignedToName": "Herald",
+          "status": "in-progress"
+        }
+      ]
+    },
+    {
+      "id": "sub-eng-ui",
+      "title": "Engineering \u2014 UI Component Migration",
+      "createdBy": "elon",
+      "createdByName": "Elon",
+      "department": "engineering",
+      "parentPhaseId": "phase-ui",
+      "status": "in-progress",
+      "createdAt": 1739230000000,
+      "tasks": [
+        {
+          "id": "task-design-sys",
+          "name": "Design System Tokens",
+          "assignedTo": "marketing",
+          "assignedToName": "Marketing",
+          "status": "completed",
+          "completedAt": 1739350000000
+        },
+        {
+          "id": "task-form-migrate",
+          "name": "Form Component Migration",
+          "assignedTo": "sales",
+          "assignedToName": "Sales",
+          "status": "in-progress"
+        },
+        {
+          "id": "task-table-migrate",
+          "name": "Table Component Migration",
+          "assignedTo": "tasks",
+          "assignedToName": "Tasks",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "sub-mktg-content",
+      "title": "Marketing \u2014 Launch Content",
+      "createdBy": "hormozi",
+      "createdByName": "Hormozi",
+      "department": "marketing",
+      "parentPhaseId": "phase-launch",
+      "status": "draft",
+      "createdAt": 1739240000000,
+      "tasks": [
+        {
+          "id": "task-landing",
+          "name": "Landing Page Copy",
+          "assignedTo": "quill",
+          "assignedToName": "Quill",
+          "status": "pending"
+        },
+        {
+          "id": "task-changelog",
+          "name": "V5 Changelog Draft",
+          "assignedTo": "quill",
+          "assignedToName": "Quill",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "cronCategories": {
+    "henry-heartbeat": { "category": "orchestration", "label": "Pipeline Check" },
+    "sales-inbox-check": { "category": "engineering", "label": "Task Execution", "relatedPhaseId": "phase-security" },
+    "scout-product-intel": { "category": "revenue", "label": "Product Intel" },
+    "quill-content-draft": { "category": "marketing", "label": "Content Drafting", "relatedPhaseId": "phase-launch" }
+  },
+  "changelog": [
+    { "ts": 1739200000000, "by": "henry", "action": "Plan created" },
+    { "ts": 1739210000000, "by": "elon", "action": "Added sub-plan: Engineering Security Sprint" },
+    { "ts": 1739220000000, "by": "warren", "action": "Added sub-plan: Revenue Pipeline Security" },
+    { "ts": 1739230000000, "by": "elon", "action": "Added sub-plan: Engineering UI Component Migration" },
+    { "ts": 1739240000000, "by": "hormozi", "action": "Added sub-plan: Marketing Launch Content" },
+    { "ts": 1739350000000, "by": "marketing", "action": "Completed: Design System Tokens" },
+    { "ts": 1739380000000, "by": "scout", "action": "Completed: API Endpoint Audit" },
+    { "ts": 1739400000000, "by": "sales", "action": "Completed: RLS Policy Migration" }
+  ]
+}

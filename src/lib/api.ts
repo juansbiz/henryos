@@ -1,3 +1,5 @@
+import type { SessionFileMeta, ParsedSessionEvent, SessionTotals, CostAnalytics, CronRunEntry, CronJobStats, AgentStatusEntry, MissionControlData, AgentIntelligence, BlockerAlert, PlanSummary, Plan, SubPlan, PlanTask, EnrichedSessionFileMeta, SessionArchiveInfo } from './types';
+
 const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 async function fetchJSON<T>(url: string, options?: RequestInit): Promise<T> {
@@ -20,6 +22,7 @@ export const api = {
   // Agents
   getAgents: () => fetchJSON<any[]>('/agents'),
   getAgent: (id: string) => fetchJSON<any>(`/agents/${id}`),
+  getAgentStatus: () => fetchJSON<AgentStatusEntry[]>('/agents/status'),
 
   // Workspaces
   getWorkspaceFiles: (agentId: string) => fetchJSON<string[]>(`/workspaces/${agentId}/files`),
@@ -37,7 +40,20 @@ export const api = {
 
   // Cron
   getCronJobs: () => fetchJSON<any[]>('/cron/jobs'),
-  getCronRuns: (jobId: string) => fetchJSON<any[]>(`/cron/runs/${jobId}`),
+  getCronRuns: (jobId: string, limit?: number, offset?: number) => {
+    const params = new URLSearchParams();
+    if (limit) params.set('limit', String(limit));
+    if (offset) params.set('offset', String(offset));
+    const qs = params.toString();
+    return fetchJSON<any>(`/cron/runs/${jobId}${qs ? `?${qs}` : ''}`);
+  },
+  getCronStats: () => fetchJSON<{
+    totalJobs: number;
+    totalRuns: number;
+    overallSuccessRate: number;
+    avgDurationMs: number;
+    jobStats: Record<string, CronJobStats>;
+  }>('/cron/stats'),
 
   // Gateway
   getGatewayStatus: () => fetchJSON<{ connected: boolean }>('/gateway/status'),
@@ -61,7 +77,7 @@ export const api = {
       body: JSON.stringify({ message }),
     }),
 
-  // Sessions
+  // Sessions (live gateway sessions)
   getSessions: (params?: { category?: string; agent?: string }) => {
     const query = new URLSearchParams();
     if (params?.category) query.set('category', params.category);
@@ -70,6 +86,52 @@ export const api = {
     return fetchJSON<any[]>(`/sessions${qs ? `?${qs}` : ''}`);
   },
 
+  // Session Browser (JSONL file browsing)
+  getAgentSessions: (agentId: string, page = 1, limit = 20, archived = false) =>
+    fetchJSON<{ sessions: EnrichedSessionFileMeta[]; total: number }>(
+      `/sessions/${agentId}/list?page=${page}&limit=${limit}&archived=${archived}`
+    ),
+  getSessionDetail: (agentId: string, sessionId: string, offset = 0, limit = 200) =>
+    fetchJSON<{ session: any; events: ParsedSessionEvent[]; totals: SessionTotals; eventCount: number }>(
+      `/sessions/${agentId}/${sessionId}?offset=${offset}&limit=${limit}`
+    ),
+
+  // Analytics
+  getCostAnalytics: () => fetchJSON<CostAnalytics>('/analytics/cost'),
+
   // Docs
   getDoc: (slug: string) => fetchJSON<{ content: string; title: string }>(`/docs/${slug}`),
+
+  // Intelligence
+  getMissionControl: () => fetchJSON<MissionControlData>('/intelligence/mission-control'),
+  getAgentIntel: (id: string) => fetchJSON<AgentIntelligence>(`/intelligence/agent/${id}`),
+  getBlockers: () => fetchJSON<BlockerAlert[]>('/intelligence/blockers'),
+
+  // Plans
+  getPlans: () => fetchJSON<PlanSummary[]>('/plans'),
+  getPlan: (id: string) => fetchJSON<Plan>('/plans/' + id),
+  createPlan: (data: { title: string; description: string; targetDate: string; phases?: any[]; createdBy?: string; createdByName?: string }) =>
+    fetchJSON<Plan>('/plans', { method: 'POST', body: JSON.stringify(data) }),
+  updatePlan: (id: string, data: any) =>
+    fetchJSON<Plan>(`/plans/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+  addSubPlan: (planId: string, data: { title: string; createdBy: string; createdByName: string; department: string; parentPhaseId: string; tasks?: any[] }) =>
+    fetchJSON<SubPlan>(`/plans/${planId}/sub-plans`, { method: 'POST', body: JSON.stringify(data) }),
+  updateSubPlan: (planId: string, subId: string, data: any) =>
+    fetchJSON<SubPlan>(`/plans/${planId}/sub-plans/${subId}`, { method: 'PUT', body: JSON.stringify(data) }),
+  updatePlanTask: (planId: string, subId: string, taskId: string, data: Partial<Pick<PlanTask, 'status' | 'notes'>>) =>
+    fetchJSON<PlanTask>(`/plans/${planId}/sub-plans/${subId}/tasks/${taskId}`, { method: 'PATCH', body: JSON.stringify(data) }),
+  archivePlan: (id: string) =>
+    fetchJSON<Plan>(`/plans/${id}/archive`, { method: 'POST' }),
+
+  // Session Archive
+  archiveSession: (agentId: string, sessionId: string, note?: string) =>
+    fetchJSON<{ success: boolean }>(`/sessions/${agentId}/${sessionId}/archive`, { method: 'POST', body: JSON.stringify({ note }) }),
+  unarchiveSession: (agentId: string, sessionId: string) =>
+    fetchJSON<{ success: boolean }>(`/sessions/${agentId}/${sessionId}/unarchive`, { method: 'POST' }),
+  bulkArchiveSessions: (sessions: { agentId: string; sessionId: string }[], note?: string) =>
+    fetchJSON<{ success: boolean }>('/sessions/bulk-archive', { method: 'POST', body: JSON.stringify({ sessions, note }) }),
+  tagSession: (agentId: string, sessionId: string, tags: string[]) =>
+    fetchJSON<{ success: boolean }>(`/sessions/${agentId}/${sessionId}/tags`, { method: 'PUT', body: JSON.stringify({ tags }) }),
+  noteSession: (agentId: string, sessionId: string, note: string) =>
+    fetchJSON<{ success: boolean }>(`/sessions/${agentId}/${sessionId}/note`, { method: 'PUT', body: JSON.stringify({ note }) }),
 };

@@ -13,6 +13,9 @@ import { standupsRouter } from './routes/standups.js';
 import { docsRouter } from './routes/docs.js';
 import { sessionsRouter } from './routes/sessions.js';
 import { systemRouter } from './routes/system.js';
+import { analyticsRouter } from './routes/analytics.js';
+import { intelligenceRouter } from './routes/intelligence.js';
+import { plansRouter } from './routes/plans.js';
 import { errorHandler } from './middleware/error-handler.js';
 import { gatewayClient } from './services/gateway-client.js';
 
@@ -35,6 +38,9 @@ app.use('/api/gateway', gatewayRouter);
 app.use('/api/sessions', sessionsRouter);
 app.use('/api/standups', standupsRouter);
 app.use('/api/docs', docsRouter);
+app.use('/api/analytics', analyticsRouter);
+app.use('/api/intelligence', intelligenceRouter);
+app.use('/api/plans', plansRouter);
 
 // Serve frontend in production (skip in dev — Vite serves on :5173)
 const clientDist = path.join(__dirname, '../client');

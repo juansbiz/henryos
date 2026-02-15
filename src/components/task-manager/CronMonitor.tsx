@@ -1,14 +1,19 @@
+import { useState } from 'react';
 import { useCronJobs } from '../../hooks/useCronJobs';
+import { CronStatsBar } from './CronStatsBar';
+import { CronRunHistory } from './CronRunHistory';
 import { StatusDot } from '../shared/StatusDot';
 import { timeAgo } from '../../lib/utils';
 import { Clock } from 'lucide-react';
 
 export function CronMonitor() {
   const { data: jobs, isLoading, error } = useCronJobs();
+  const [selectedJob, setSelectedJob] = useState<{ id: string; name: string } | null>(null);
 
   return (
     <div className="card p-5">
       <h3 className="mb-4 text-sm font-semibold text-text-secondary uppercase tracking-wider">Cron Monitor</h3>
+      <CronStatsBar />
       {isLoading ? (
         <div className="py-8 text-center text-text-secondary text-sm">Loading...</div>
       ) : error ? (
@@ -22,7 +27,11 @@ export function CronMonitor() {
                 ? 'success'
                 : 'idle';
             return (
-              <div key={job.id} className="flex items-center justify-between rounded-lg bg-page px-3 py-2.5">
+              <button
+                key={job.id}
+                onClick={() => setSelectedJob({ id: job.id, name: job.name })}
+                className="w-full text-left flex items-center justify-between rounded-lg bg-page px-3 py-2.5 transition-colors hover:bg-card-hover cursor-pointer"
+              >
                 <div className="flex items-center gap-3">
                   <StatusDot status={status} />
                   <div>
@@ -42,7 +51,7 @@ export function CronMonitor() {
                     </span>
                   )}
                 </div>
-              </div>
+              </button>
             );
           })}
           {(!jobs || jobs.length === 0) && (
@@ -52,6 +61,15 @@ export function CronMonitor() {
             </div>
           )}
         </div>
+      )}
+
+      {selectedJob && (
+        <CronRunHistory
+          jobId={selectedJob.id}
+          jobName={selectedJob.name}
+          open={!!selectedJob}
+          onClose={() => setSelectedJob(null)}
+        />
       )}
     </div>
   );

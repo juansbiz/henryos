@@ -1,8 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Network, MessageSquare, FolderOpen, BookOpen } from 'lucide-react';
+import { Radar, Map, LayoutDashboard, Network, MessageSquare, FolderOpen, BookOpen, ScrollText } from 'lucide-react';
 
 const navItems = [
-  { path: '/', label: 'Task Manager', icon: LayoutDashboard },
+  { path: '/', label: 'Mission Control', icon: Radar },
+  { path: '/plans', label: 'Plans', icon: Map },
+  { path: '/tasks', label: 'Task Manager', icon: LayoutDashboard },
+  { path: '/sessions', label: 'Sessions', icon: ScrollText },
   { path: '/org', label: 'Org Chart', icon: Network },
   { path: '/standup', label: 'Standup', icon: MessageSquare },
   { path: '/workspaces', label: 'Workspaces', icon: FolderOpen },
@@ -38,7 +41,7 @@ export function Sidebar() {
       </nav>
       <div className="border-t border-border p-3">
         <div className="text-[10px] text-text-secondary">
-          v1.0.0 — Port 7100
+          v1.1.0 — Port 7100
         </div>
       </div>
     </aside>
