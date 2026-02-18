@@ -18,9 +18,10 @@ Shows each AI model in use with:
 - Model name and provider ID
 - Number of agents using that model as primary
 - Visual color coding by tier:
-  - **Gold** — Opus 4.6 (BRAIN tier, department heads)
-  - **Green** — GLM-5 (MUSCLE tier, worker agents)
-  - **Yellow** — GLM-4.7-Flash (DAILY tier, lightweight tasks)
+  - **Gold** — Opus 4.6 (Henry only — COO/Orchestrator)
+  - **Blue** — Sonnet 4.6 (BRAIN tier — department heads: Warren, Hormozi, Elon)
+  - **Green** — GLM-4.7-Flash (MUSCLE tier, all worker agents — primary model)
+  - **Yellow** — GLM-5 / OpenRouter (MUSCLE fallbacks)
 
 ## Cron Monitor
 

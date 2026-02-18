@@ -21,7 +21,7 @@ export function Sidebar() {
         </div>
         <div>
           <h1 className="text-sm font-semibold text-text-primary">Henry OS</h1>
-          <p className="text-[10px] text-text-secondary">Axolop Agent Management</p>
+          <p className="text-[10px] text-text-secondary">juansbiz LLC</p>
         </div>
       </div>
       <nav className="flex-1 space-y-1 p-3">

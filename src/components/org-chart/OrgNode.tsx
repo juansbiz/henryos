@@ -25,8 +25,9 @@ export function OrgNode({ node }: OrgNodeProps) {
   const agentStatus = statuses?.find(s => s.id === node.id);
   const agentIntel = missionData?.agents.find(a => a.id === node.id);
 
-  const tierStyles = {
+  const tierStyles: Record<string, string> = {
     orchestrator: 'border-amber ring-1 ring-amber/20',
+    business: 'border-dashed border-2 border-border',
     chief: 'border-amber/50',
     agent: 'border-border',
   };

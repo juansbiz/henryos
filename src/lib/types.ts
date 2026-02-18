@@ -81,7 +81,7 @@ export interface SessionEntry {
   abortedLastRun: boolean;
 }
 
-export type OrgRole = 'orchestrator' | 'chief' | 'agent';
+export type OrgRole = 'orchestrator' | 'business' | 'chief' | 'agent';
 
 export interface OrgNode {
   id: string;
@@ -91,6 +91,7 @@ export interface OrgNode {
   tier: OrgRole;
   children?: OrgNode[];
   emoji?: string;
+  business?: string;
 }
 
 // Session Browser types

@@ -1,6 +1,8 @@
 # Henry OS
 
-Henry OS is a self-hosted web dashboard for managing OpenClaw AI agents powering Axolop CRM. It provides a unified interface for monitoring agent activity, editing agent configurations, running standups, and visualizing the organizational hierarchy.
+Henry OS is a self-hosted web dashboard for managing OpenClaw AI agents powering the juansbiz LLC portfolio (Axolop, Inbox EQ, Yally.TV). It provides a unified interface for monitoring agent activity, editing agent configurations, running standups, and visualizing the organizational hierarchy.
+
+**Axolop** is the open-source, AI-native ecommerce CRM that replaces your entire tech stack — built for Shopify/WooCommerce founders doing $20K-$1M/mo. Model: n8n (self-hosted free, cloud paid).
 
 ## Key Features
 

@@ -5,16 +5,21 @@ The Org Chart page visualizes the agent hierarchy as a department-based organiza
 ## Hierarchy
 
 ```
-Henry (Orchestrator, Opus 4.6)
-├── Warren (CRO, Opus 4.6)
-│   ├── Scout (Product Intelligence, GLM-5)
-│   └── Herald (Product Launches, GLM-5)
-├── Hormozi (CMO, Opus 4.6)
-│   └── Quill (Content Writer, GLM-5)
-└── Elon (CTO, Opus 4.6)
-    ├── Sales (Sr. Dev — Pipeline, GLM-5)
-    ├── Marketing (Sr. Dev — Campaigns, GLM-5)
-    ├── Tasks (Sr. Dev — Workflows, GLM-5)
+Henry (Orchestrator/COO, Opus 4.6)
+├── Warren (CRO, Sonnet 4.6)
+│   ├── Scout (Product Intelligence, GLM-4.7-Flash)
+│   └── Herald (Product Launches, GLM-4.7-Flash)
+├── Hormozi (CMO, Sonnet 4.6)
+│   ├── Pen (Copywriter, GLM-4.7-Flash)
+│   ├── Spark (Creative Director, GLM-4.7-Flash)
+│   ├── Funnel (Funnel Builder, GLM-4.7-Flash)
+│   ├── Megaphone (Ads & Distribution, GLM-4.7-Flash)
+│   └── Quill (Content Writer, GLM-4.7-Flash)
+└── Elon (CTO, Sonnet 4.6)
+    ├── Sales (Sr. Dev — Pipeline, GLM-4.7-Flash)
+    ├── Marketing (Sr. Dev — Campaigns, GLM-4.7-Flash)
+    ├── Tasks (Sr. Dev — Workflows, GLM-4.7-Flash)
+    ├── Backend (Sr. Dev — Infra, GLM-4.7-Flash)
     └── Reviewer (Code Review, GLM-4.7-Flash)
 ```
 
@@ -22,9 +27,9 @@ Henry (Orchestrator, Opus 4.6)
 
 | Tier | Model | Role |
 |------|-------|------|
-| Orchestrator | Opus 4.6 | Henry — routes, plans, approves/rejects |
-| Chief | Opus 4.6 | Warren, Hormozi, Elon — department leaders |
-| Agent | GLM-5 / GLM-4.7-Flash | Specialized workers |
+| Orchestrator | Opus 4.6 | Henry — COO, routes, plans, approves/rejects |
+| Chief | Sonnet 4.6 | Warren, Hormozi, Elon — department leaders |
+| Agent | GLM-4.7-Flash (fallback: GLM-5, OpenRouter) | Specialized workers |
 
 ## Stats Bar
 

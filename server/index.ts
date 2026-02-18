@@ -24,7 +24,7 @@ const PORT = parseInt(process.env.PORT || '7100', 10);
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://hificopy.github.io'],
+  origin: ['http://localhost:5173', 'https://juansbiz.github.io'],
 }));
 app.use(express.json());
 

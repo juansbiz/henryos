@@ -1,0 +1,92 @@
+{
+  "businesses": [
+    {
+      "id": "axolop",
+      "name": "AXOLOP",
+      "status": "active",
+      "description": "Open-source, AI-native ecommerce CRM — replaces Klaviyo + Gorgias + Yotpo + HubSpot. Self-hosted free, cloud March 2026.",
+      "codePath": "/home/juansbiz/Desktop/CODE/1. AXOLOP /1. AXOLOP-CODE",
+      "brainPath": "/home/juansbiz/Desktop/CODE/1. AXOLOP /2. AXOLOP-BRAIN",
+      "gateway": { "port": 18789, "url": "ws://127.0.0.1:18789" },
+      "depHeads": ["warren", "hormozi", "elon"],
+      "agents": ["scout", "herald", "pen", "spark", "funnel", "megaphone", "quill", "sales", "marketing", "tasks", "backend", "reviewer", "prospector", "sentinel", "closer"]
+    },
+    {
+      "id": "axolop-b2b",
+      "name": "AXOLOP B2B",
+      "status": "active",
+      "description": "Juan's personal Axolop variant — Forms (Typeform), Calendar (iClosed), Email Marketing, Community Builder (onedollardtc.com). Feature-flagged to axolopcrm@gmail.com only.",
+      "codePath": "/home/juansbiz/Desktop/CODE/1. AXOLOP /1. AXOLOP-CODE",
+      "brainPath": "/home/juansbiz/Desktop/CODE/1. AXOLOP /2. AXOLOP-BRAIN",
+      "gateway": { "port": 18789, "url": "ws://127.0.0.1:18789" },
+      "depHeads": ["elon"],
+      "agents": []
+    },
+    {
+      "id": "inboxeq",
+      "name": "INBOX EQ",
+      "status": "active",
+      "description": "Hyros-inspired email deliverability platform — 2X your Klaviyo email sales. Revenue-based pricing $69-$1,497/mo. Competitor: MailMend.",
+      "codePath": "/home/juansbiz/Desktop/CODE/2. INBOXEQ/1. App",
+      "brainPath": "/home/juansbiz/Desktop/CODE/2. INBOXEQ/2. INBOXEQ-BRAIN",
+      "gateway": { "port": 18791, "url": "ws://127.0.0.1:18791" },
+      "depHeads": ["warren", "hormozi", "elon"],
+      "agents": ["scout", "herald", "deliverability-suite", "promo-inbox-code", "api-app-integrations", "backend"]
+    },
+    {
+      "id": "onedollardtc",
+      "name": "onedollardtc.com",
+      "status": "setup",
+      "description": "$1/mo dropship community — TOF for juansbiz funnel. Feeds into Axolop.",
+      "codePath": null,
+      "brainPath": null,
+      "gateway": null,
+      "depHeads": [],
+      "agents": []
+    },
+    {
+      "id": "navena",
+      "name": "NAVENA",
+      "status": "nascent",
+      "description": "Peptides brand — Phase 3 (March+)",
+      "codePath": null,
+      "brainPath": null,
+      "gateway": null,
+      "depHeads": [],
+      "agents": []
+    },
+    {
+      "id": "zabuddy",
+      "name": "ZABUDDY",
+      "status": "nascent",
+      "description": "Cannabis brand — dropship → paid influencer ambassadors → scale. Phase 3.",
+      "codePath": null,
+      "brainPath": null,
+      "gateway": null,
+      "depHeads": [],
+      "agents": []
+    },
+    {
+      "id": "6laridad",
+      "name": "6LARIDAD",
+      "status": "nascent",
+      "description": "Dropshipped potions — Phase 3.",
+      "codePath": null,
+      "brainPath": null,
+      "gateway": null,
+      "depHeads": [],
+      "agents": []
+    },
+    {
+      "id": "yallytv",
+      "name": "YALLY.TV",
+      "status": "nascent",
+      "description": "Video platform — TBD",
+      "codePath": "/home/juansbiz/Desktop/CODE/3. YALLY.TV",
+      "brainPath": "/home/juansbiz/Desktop/CODE/3. YALLY.TV/2. YALLY-BRAIN",
+      "gateway": null,
+      "depHeads": [],
+      "agents": []
+    }
+  ]
+}

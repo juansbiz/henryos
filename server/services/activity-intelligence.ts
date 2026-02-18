@@ -87,6 +87,7 @@ const AGENTS: { id: string; name: string; emoji: string; department: string }[] 
   { id: 'scout', name: 'Scout', emoji: '\ud83d\udd2d', department: 'revenue' },
   { id: 'herald', name: 'Herald', emoji: '\ud83d\udce2', department: 'revenue' },
   { id: 'quill', name: 'Quill', emoji: '\u270d\ufe0f', department: 'marketing' },
+  { id: 'backend', name: 'Backend', emoji: '\u2699\ufe0f', department: 'engineering' },
 ];
 
 // -- Cache --
